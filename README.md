@@ -30,11 +30,11 @@ This demo is mostly useful to show how to use webpack to bundle a single page ap
 The demo is currently using these paths to require the autocomplete widget and its required CSS:
 
 ```js
-require('jquery-ui/themes/base/core.css');
-require('jquery-ui/themes/base/menu.css');
-require('jquery-ui/themes/base/autocomplete.css');
-require('jquery-ui/themes/base/theme.css');
-var autocomplete = require('jquery-ui/ui/widgets/autocomplete');
+require('jquery-ui/themes/base/jquery.ui.core.css');
+require('jquery-ui/themes/base/jquery.ui.menu.css');
+require('jquery-ui/themes/base/jquery.ui.autocomplete.css');
+require('jquery-ui/themes/base/jquery.ui.theme.css');
+var autocomplete = require('jquery-ui/autocomplete');
 ```
 
 If you don't want to specify the `themes/base` and `ui/widgets` paths for every import, you can use webpack's [`resolve.alias`](https://webpack.github.io/docs/configuration.html#resolve-alias) configuration:
@@ -42,16 +42,16 @@ If you don't want to specify the `themes/base` and `ui/widgets` paths for every 
 ```js
 resolve: {
 	alias: {
-		'jquery-ui': 'jquery-ui/ui/widgets',
-		'jquery-ui-css': 'jquery-ui/../../themes/base'
+		'jquery-ui': 'jquery-ui',
+		'jquery-ui-css': 'jquery-ui/themes/base'
 	}
 }
 ```
 This specifies two aliases, one for widgets, one for CSS. With that in place, the code then looks like this:
 ```js
-require('jquery-ui-css/core.css');
-require('jquery-ui-css/menu.css');
-require('jquery-ui-css/autocomplete.css');
-require('jquery-ui-css/theme.css');
+require('jquery-ui-css/jquery.ui.core.css');
+require('jquery-ui-css/jquery.ui.menu.css');
+require('jquery-ui-css/jquery.ui.autocomplete.css');
+require('jquery-ui-css/jquery.ui.theme.css');
 var autocomplete = require('jquery-ui/autocomplete');
 ```
